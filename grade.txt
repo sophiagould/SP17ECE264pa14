@@ -1,0 +1,3 @@
+100
+Late penalty adjustment: 30%
+Final grade: 70.0

@@ -1,0 +1,31 @@
+Commit ID tagged for submission: 0ae02f76879974f86d17c54ba39cb57775475d91
+Submission graded at: 2017-04-24 23:35:07
+
+*****************************************************************************************************
+* [!] Please contact the person who made this commit if you beleive there are errors in the result. *
+* [!] In this case, it would be Alex: aionescu at purdue dot edu.                                   *
+* [!] Do not contact the other TA as they would not be able to help!                                *
+*****************************************************************************************************
+
+[*] Cleaning up...
+
+[*] Compiling...
+gcc -std=c99 -g -Wall -Wshadow --pedantic -Wunreachable-code -Wvla -Werror -lpthread -lm --combine bmp.c -c -o bmp.o
+gcc -std=c99 -g -Wall -Wshadow --pedantic -Wunreachable-code -Wvla -Werror -lpthread -lm --combine filterParallel.c -c -o filterParallel.o
+gcc -std=c99 -g -Wall -Wshadow --pedantic -Wunreachable-code -Wvla -Werror -lpthread -lm --combine pa14.c -c -o pa14.o
+gcc -std=c99 -g -Wall -Wshadow --pedantic -Wunreachable-code -Wvla -Werror -lpthread -lm bmp.o filterParallel.o pa14.o -o pa14
+Testing 32 threads...
+0/540000 (0.000000 %) pixels different. Passed!
+Verifying threads were executed in parallel...
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31
+Passed!
+
+Testing 64 threads...
+0/540000 (0.000000 %) pixels different. Passed!
+Verifying threads were executed in parallel...
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63
+Passed!
+
+Testing 64 threads under valgrind...
+[*] There are 0 byte(s) leaked.
+[*] There are 0 error(s) detected by valgrind.
