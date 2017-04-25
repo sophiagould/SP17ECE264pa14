@@ -22,7 +22,7 @@ void applyThread(BMPImage * imageIn, BMPImage * imageOut, BoxFilter f, int tid, 
 	int fir;
 	int las;
 
-	size = ((imageOut -> norm_height + (numThreads - 1)) / numThreads);
+	size = ((imageOut -> norm_height + numThreads - 1) / numThreads);
 	sect = size * tid;
 	all = sect + size;
 
@@ -55,6 +55,42 @@ void applyThread(BMPImage * imageIn, BMPImage * imageOut, BoxFilter f, int tid, 
 					}
 				}
 			}
+
+			red = red / f.norm;
+			blue = blue / f.norm;
+			green = green / f.norm;
+			alpha = alpha / f.norm;
+
+			if(red > 255){
+				red = 255;
+			}
+			if(blue > 255){
+				blue = 255;
+			}
+			if(green > 255){
+				green = 255;
+			}
+			if(alpha > 255){
+				alpha = 255;
+			}
+			if(red < 0){
+				red = 0;
+			}
+			if(blue < 0){
+				blue = 0;
+			}
+			if(green < 0){
+				green = 0;
+			}
+			if(alpha < 0){
+				alpha = 0;
+			}
+
+			imageOut -> pixels[x][y].red = red;
+			imageOut -> pixels[x][y].blue = blue;
+			imageOut -> pixels[x][y].green = green;
+			imageOut -> pixels[x][y].alpha = alpha;
+
 		}
 	}
 	return;
